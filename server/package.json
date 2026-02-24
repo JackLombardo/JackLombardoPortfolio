@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-chat-api",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "openai": "^4.0.0"
+  }
+}
