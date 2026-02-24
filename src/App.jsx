@@ -1,4 +1,7 @@
 // src/App.jsx
+import ChatBox from "./ChatBox";
+
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const experience = [
   {
@@ -50,13 +53,13 @@ const projects = [
     title: "PixelLoop",
     desc: "Built a pixel-canvas drawing app for creating pixel art with save and export functionality.",
     bullets: ["Role: Did this entirely as a solo side project."],
-    tech: ["C#", "MonoGame"]
+    tech: ["C#", "MonoGame"],
   },
   {
     title: "Apartment Laundry Reservation System",
     desc: "Developed a web based laundry reservation system for apartment complexes, enabling tenants to book and manage shared washer/dryer time slots.",
     bullets: ["Role: Solo developer (end-to-end design, implementation, and deployment)."],
-    tech: ["AAMPS (Apache, MySQL, PHP)"]
+    tech: ["AAMPS (Apache, MySQL, PHP)"],
   },
 ];
 
@@ -129,6 +132,9 @@ export default function App() {
               <a className="text-sm text-neutral-300 hover:text-neutral-100" href="#projects">
                 Projects
               </a>
+              <a className="text-sm text-neutral-300 hover:text-neutral-100" href="#assistant">
+                Assistant
+              </a>
               <a className="text-sm text-neutral-300 hover:text-neutral-100" href="#contact">
                 Contact
               </a>
@@ -150,7 +156,6 @@ export default function App() {
               <ButtonLink href="https://www.linkedin.com/in/jack-lombardo-45a85b226/">
                 LinkedIn
               </ButtonLink>
-              {/* optional: add a resume PDF link later */}
               {/* <ButtonLink href="/resume.pdf">Resume</ButtonLink> */}
             </div>
 
@@ -218,27 +223,7 @@ export default function App() {
             <div className="mx-auto mt-6 grid w-full max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
               {projects.map((p) => (
                 <Card key={p.title}>
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-lg font-semibold">{p.title}</h3>
-
-                    {/* optional repo links (set hrefs when you have them) */}
-                    {p.links?.length ? (
-                      <div className="flex gap-3 shrink-0">
-                        {p.links.map((l) => (
-                          <a
-                            key={l.label}
-                            className="text-sm underline text-neutral-300 hover:text-neutral-100"
-                            href={l.href}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {l.label}
-                          </a>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-
+                  <h3 className="text-lg font-semibold">{p.title}</h3>
                   <p className="mt-2 text-neutral-300">{p.desc}</p>
 
                   {p.bullets?.length ? (
@@ -256,6 +241,17 @@ export default function App() {
                   </div>
                 </Card>
               ))}
+            </div>
+          </section>
+
+          {/* Assistant */}
+          <section className="mt-12" id="assistant">
+            <SectionTitle
+              title="Ask the Assistant"
+              subtitle="Ask questions about my background, experience, and projects."
+            />
+            <div className="mt-6">
+              <ChatBox apiBase={API_BASE} />
             </div>
           </section>
 
